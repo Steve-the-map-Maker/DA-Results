@@ -27,74 +27,71 @@ const map = new maplibregl.Map({
   zoom: 10,
 });
 
+let originalGeojsonData;
+let showingPortland = false;
+
 map.on('load', () => {
-  // Load and parse the CSV data
-  d3.csv('data/election_results.csv').then(csvData => {
-    // Convert CSV data to a dictionary for quick lookup
-    const csvDict = {};
-    csvData.forEach(row => {
-      csvDict[row.precinct_id] = row;
+  // Fetch GeoJSON data
+  fetch('data/MultnomahCounty2024_normalized.geojson')
+    .then(response => response.json())
+    .then(geojsonData => {
+      console.log('Fetched GeoJSON data:', geojsonData); // Log the data
+
+      originalGeojsonData = geojsonData; // Store original data
+
+      // Add GeoJSON data as a new source
+      map.addSource('multnomah', {
+        type: 'geojson',
+        data: geojsonData
+      });
+
+      // Add a new layer to visualize the GeoJSON data with a color gradient based on Nathan Vasquez Percentage
+      map.addLayer({
+        id: 'multnomah-layer',
+        type: 'fill',
+        source: 'multnomah',
+        paint: {
+          'fill-color': [
+            'interpolate',
+            ['linear'],
+            ['to-number', ['slice', ['get', 'Nathan_Vasquez_Percentage'], 0, -1]],
+            0, '#f2f0f7',
+            10, '#dadaeb',
+            20, '#bcbddc',
+            30, '#9e9ac8',
+            40, '#756bb1',
+            50, '#54278f',
+            60, '#3f007d',
+            70, '#2d004b',
+            80, '#1a0033',
+            90, '#0a0017',
+            100, '#000000'
+          ],
+          'fill-opacity': [
+            'interpolate',
+            ['linear'],
+            ['get', 'Normalized_Votes'],
+            0, 0.1,
+            1, 0.8
+          ],
+          'fill-outline-color': '#000' // Outline color (black)
+        }
+      });
+
+     
+
+      // Change the cursor to a pointer when the mouse is over the multnomah-layer
+      map.on('mouseenter', 'multnomah-layer', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      // Change it back to default when it leaves
+      map.on('mouseleave', 'multnomah-layer', () => {
+        map.getCanvas().style.cursor = '';
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching GeoJSON data:', error);
     });
-
-    // Fetch GeoJSON data
-    fetch('data/MultnomahCounty2024_transformed.geojson')
-      .then(response => response.json())
-      .then(geojsonData => {
-        console.log('Fetched GeoJSON data:', geojsonData); // Log the data
-
-        // Add GeoJSON data as a new source
-        map.addSource('multnomah', {
-          type: 'geojson',
-          data: geojsonData
-        });
-
-        // Add a new layer to visualize the GeoJSON data
-        map.addLayer({
-          id: 'multnomah-layer',
-          type: 'fill',
-          source: 'multnomah',
-          paint: {
-            'fill-color': '#088', // Fill color
-            'fill-opacity': 0.8,  // Fill opacity
-            'fill-outline-color': '#000' // Outline color (black)
-          }
-        });
-
-        // Add a popup to display CSV data
-        const popup = new maplibregl.Popup({
-          closeButton: false,
-          closeOnClick: false
-        });
-
-        // Add event listeners for the popup
-        map.on('mousemove', 'multnomah-layer', (e) => {
-          map.getCanvas().style.cursor = 'pointer';
-
-          const feature = e.features[0];
-          const precinctId = feature.properties.Precinct;
-          console.log(`Hovered over precinct: ${precinctId}`); // Log the precinct ID
-          
-          const precinctData = csvDict[precinctId];
-          console.log(`Data for precinct ${precinctId}:`, precinctData); // Log the precinct data
-
-          if (precinctData) {
-            const popupContent = `
-              <strong>Precinct:</strong> ${precinctId}<br>
-              <strong>Votes:</strong> ${precinctData.votes}
-            `;
-
-            popup.setLngLat(e.lngLat)
-                 .setHTML(popupContent)
-                 .addTo(map);
-          }
-        });
-
-        map.on('mouseleave', 'multnomah-layer', () => {
-          map.getCanvas().style.cursor = '';
-          popup.remove();
-        });
-      })
-      .catch(error => console.error('Error loading GeoJSON data:', error));
-  })
-  .catch(error => console.error('Error loading CSV data:', error));
 });
+
