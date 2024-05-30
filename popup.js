@@ -14,8 +14,10 @@
     const popup = new maplibregl.Popup({ offset: [0, -15] })
       .setLngLat(e.lngLat)
       .setHTML(`
+      
+        <strong>Precinct</strong><br>
+        Percentage: ${feature.properties.Precinct}<br>
         <strong>Mike Schmidt</strong><br>
-        Percentage: ${feature.properties.Mike_Schmidt_Percentage}<br>
         Votes: ${feature.properties.Mike_Schmidt_Votes}<br><br>
         <strong>Nathan Vasquez</strong><br>
         Percentage: ${feature.properties.Nathan_Vasquez_Percentage}<br>
