@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#map-container {
+  flex: 1;
+  display: flex;
+}
+
+#charts-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+#charts-left .chart-container {
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+#map {
+  flex: 1;
+  position: relative;
+  margin: 10px;
+}
+
+#show-portland {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #007bff;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+#show-portland:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+#charts-bottom {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+#charts-bottom .chart-container {
+  flex: 1;
+  margin: 0 10px;
+  width: 300px; /* Ensuring the width is consistent */
+  height: 300px; /* Ensuring the height is consistent */
+}
