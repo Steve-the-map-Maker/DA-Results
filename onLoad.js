@@ -46,33 +46,32 @@ map.on('load', () => {
         });
   
         // Define districts and their respective colors
-        const districts = [
-          "Multnomah Co Commissioner District 1",
-          "Multnomah Co Commissioner District 2",
-          "Multnomah Co Commissioner District 3",
-          "Multnomah Co Commissioner District 4"
-        ];
+const districts = [
+    "Multnomah Co Commissioner District 1",
+    "Multnomah Co Commissioner District 2",
+    "Multnomah Co Commissioner District 3",
+    "Multnomah Co Commissioner District 4"
+  ];
   
-        const colors = [
-          '#ff0000', // Red
-          '#00ff00', // Green
-          '#0000ff', // Blue
-          '#ff00ff'  // Magenta
-        ];
+  const colors = [
+    '#FF6F61', // Light Coral
+    '#3CB371', // Medium Sea Green
+    '#6495ED', // Cornflower Blue
+    '#DAA520'  // Medium Orchid
+  ];
   
-        // Add a new line layer for each district
-        districts.forEach((district, index) => {
-          map.addLayer({
-            id: `outline-${index}`,
-            type: 'line',
-            source: 'multnomah',
-            filter: ['==', ['get', 'Mult_Comm'], district],
-            paint: {
-              'line-color': colors[index], // Use the color corresponding to the district
-              'line-width': 3 // Adjust the thickness of the outline here
-            }
-          });
-        });
+  districts.forEach((district, index) => {
+    map.addLayer({
+      id: `outline-${index}`,
+      type: 'line',
+      source: 'multnomah',
+      filter: ['==', ['get', 'Mult_Comm'], district],
+      paint: {
+        'line-color': colors[index], // Use the color corresponding to the district
+        'line-width': 3 // Adjust the thickness of the outline here
+      }
+    });
+  });
   
         // Change the cursor to a pointer when the mouse is over the multnomah-layer
         map.on('mouseenter', 'multnomah-layer', () => {

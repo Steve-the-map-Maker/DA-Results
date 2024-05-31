@@ -4,6 +4,9 @@ body {
   display: flex;
   height: 100vh;
   flex-direction: column;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: Arial, sans-serif;
 }
 
 #map-container {
@@ -17,7 +20,8 @@ body {
   justify-content: space-between;
   width: 300px;
   padding: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #charts-left .chart-container {
@@ -37,12 +41,12 @@ body {
   left: 20px;
   z-index: 10;
   padding: 10px;
-  background-color: white;
+  background-color: #333;
   border: 1px solid #007bff;
   color: #007bff;
   cursor: pointer;
   font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #show-portland:hover {
@@ -54,7 +58,8 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #charts-bottom .chart-container {
@@ -62,4 +67,38 @@ body {
   margin: 0 10px;
   width: 300px; /* Ensuring the width is consistent */
   height: 300px; /* Ensuring the height is consistent */
+}
+
+.chartjs-render-monitor {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+canvas {
+  background-color: #1e1e1e;
+}
+
+.maplibre-popup {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.maplibre-popup-content {
+  background-color: #1e1e1e;
+}
+
+.maplibre-popup-tip {
+  border-top-color: #1e1e1e;
+  border-bottom-color: #1e1e1e;
+}
+
+/* Custom style for the close button */
+.maplibre-popup-close-button {
+  color: #e0e0e0;
+  font-size: 1.2rem;
 }
