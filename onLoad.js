@@ -87,3 +87,25 @@ map.on('load', () => {
       console.error('Error fetching GeoJSON data:', error);
     });
 });
+
+// Add event listener to the button
+document.getElementById('show-portland').addEventListener('click', () => {
+  if (!showingPortland) {
+    // Filter GeoJSON data to include only features in the City of Portland
+    const portlandData = {
+      ...originalGeojsonData,
+      features: originalGeojsonData.features.filter(feature => feature.properties.CITY === 'Portland')
+    };
+
+    // Update the GeoJSON source with the filtered data
+    map.getSource('multnomah').setData(portlandData);
+    document.getElementById('show-portland').textContent = 'Show Full Map';
+  } else {
+    // Reset to the original GeoJSON data
+    map.getSource('multnomah').setData(originalGeojsonData);
+    document.getElementById('show-portland').textContent = 'Show Only Portland';
+  }
+
+  // Toggle the state
+  showingPortland = !showingPortland;
+});

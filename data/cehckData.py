@@ -1,7 +1,7 @@
 import geopandas as gpd
 
 # Load the GeoJSON file
-geojson_file_path = 'data/MultnomahCounty2024_normalized.geojson'
+geojson_file_path = 'data/MultnomahCounty2024_cleaned.geojson'
 geo_data = gpd.read_file(geojson_file_path)
 
 # Step 1: Inspect column names

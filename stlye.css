@@ -35,7 +35,7 @@ body {
   margin: 10px;
 }
 
-#show-portland {
+#show-portland, #show-portland-charts {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -48,10 +48,12 @@ body {
   font-size: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
-
-#show-portland:hover {
+#show-portland:hover, #show-portland-charts:hover {
   background-color: #007bff;
   color: white;
+}
+#show-portland-charts {
+  left: 200px; /* Adjust this value to position the button next to the existing one */
 }
 
 #charts-bottom {
