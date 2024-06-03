@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>DA Results Multnomah County Elections 2024</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="stlye.css" >
-</head>
-<body>
-  <div id="map-container">
-    <div id="charts-left">
-      <!-- Chart containers for the left side will be appended here by JavaScript -->
+  <head>
+    <meta charset="UTF-8" />
+    <title>DA Results Multnomah County Elections 2024</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stlye.css" />
+  </head>
+  <body>
+    <div id="map-container">
+      <div id="charts-left">
+        <!-- Chart containers for the left side will be appended here by JavaScript -->
+      </div>
+      <div id="map">
+        <button id="show-portland" class="btn btn-outline-primary">
+          Show Only Portland
+        </button>
+      </div>
     </div>
-    <div id="map">
-      <button id="show-portland" class="btn btn-outline-primary">Show Only Portland</button>
+    <div id="charts-bottom">
+      <!-- Chart containers for the bottom side will be appended here by JavaScript -->
     </div>
-  </div>
-  <div id="charts-bottom">
-    <!-- Chart containers for the bottom side will be appended here by JavaScript -->
-  </div>
-  <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="map.js"></script>
-  <script src="onLoad.js"></script>
-  <script src="loadChart.js"></script>
-  <script src="renderChart.js"></script>
-  <script src="popup.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</body>
-</html>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="globals.js"></script> <!-- Load globals first -->
+    <script src="map.js"></script>
+    <script src="onLoad.js"></script>
+    <script src="loadChart.js"></script>
+    <script src="totalChart.js"></script>
+    <script src="renderChart.js"></script>
+    <script src="chartUpdate.js"></script>
+    <script src="popup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 

@@ -23,10 +23,6 @@ const style = {
 const map = new maplibregl.Map({
   container: "map",
   style: style,
-  center: [-122.604918, 45.514579], // Portland coordinates
+  center: [-122.504918, 45.554579], // Portland coordinates
   zoom: 10,
 });
-
-let originalGeojsonData;
-let showingPortland = false;
-

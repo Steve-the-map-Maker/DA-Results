@@ -92,6 +92,9 @@ canvas {
   background-color: #1e1e1e;
 }
 
+.maplibregl-popup-content {
+  padding: 0px;
+}
 .maplibre-popup-tip {
   border-top-color: #1e1e1e;
   border-bottom-color: #1e1e1e;
