@@ -34,7 +34,7 @@ function renderCharts(districtResults, totalResults) {
         chartsBottomContainer.appendChild(chartDiv);
       }
   
-      console.log(`Chart container created and appended to DOM for ${district}.`);
+      // console.log(`Chart container created and appended to DOM for ${district}.`);
   
       const ctx = document.getElementById(chartId).getContext('2d');
       console.log(`Creating chart for ${district} with the following data:`, {

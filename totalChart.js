@@ -5,7 +5,7 @@ function TotalChart(chartsBottomContainer, totalResults) {
     totalChartDiv.innerHTML = `<canvas id="${totalChartId}"></canvas>`;
     chartsBottomContainer.appendChild(totalChartDiv);
   
-    console.log('Chart container created and appended to DOM for Total Results.');
+    // console.log('Chart container created and appended to DOM for Total Results.');
   
     const totalCtx = document.getElementById(totalChartId).getContext('2d');
     console.log('Creating chart for Total Results with the following data:', {

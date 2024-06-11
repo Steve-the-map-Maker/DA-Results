@@ -3,7 +3,7 @@ map.on('load', () => {
   fetch('data/MultnomahCounty2024_normalized.geojson')
     .then(response => response.json())
     .then(geojsonData => {
-      console.log('Fetched GeoJSON data:', geojsonData); // Log the data
+      // console.log('Fetched GeoJSON data:', geojsonData); // Log the data
 
       originalGeojsonData = geojsonData; // Store original data
 
